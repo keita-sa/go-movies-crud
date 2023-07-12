@@ -47,8 +47,10 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 func createMovie(w http.ResponseWriter, r *http.Request) {
 	// レスポンスヘッダの設定
 	w.Header().Set("Content-Type", "application/json")
+	// 変数宣言
 	var movie Movie
 	_ = json.NewDecoder(r.Body).Decode(&movie)
+	// strconv.Itoaで数値を文字列に変換
 	movie.ID = strconv.Itoa(rand.Intn(100))
 	movies = append(movies, movie)
 	json.NewEncoder(w).Encode(movie)
@@ -60,6 +62,9 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 	// クエリパラメータの取得
 	params := mux.Vars(r)
 
+	// loop over the movies, range
+	// delete the movie with the i.d that you i've sent
+	// add a new movie - the movie that we send in the body of postman
 	for index, item := range movies {
 		if item.ID == params["id"] {
 			movies = append(movies[:index], movies[index+1:]...)
@@ -68,7 +73,6 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 			movie.ID = params["id"]
 			movies = append(movies, movie)
 			json.NewEncoder(w).Encode(movie)
-			return
 		}
 	}
 }
@@ -76,7 +80,6 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	// レスポンスヘッダの設定
 	w.Header().Set("Content-Type", "application/json")
-	// クエリパラメータの取得
 	params := mux.Vars(r)
 	for index, item := range movies {
 
@@ -93,7 +96,7 @@ func main() {
 	r := mux.NewRouter()
 
 	movies = append(movies, Movie{ID: "1", Isbn: "438277", Title: "Movie One", Director: &Director{Firstname: "John", Lastname: "Doe"}})
-	movies = append(movies, Movie{ID: "2", Isbn: "45436", Title: "Movie Two", Director: &Director{Firstname: "Steve", Lastname: "Smith"}})
+	movies = append(movies, Movie{ID: "2", Isbn: "454369", Title: "Movie Two", Director: &Director{Firstname: "Steve", Lastname: "Smith"}})
 
 	r.HandleFunc("/movies", getMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
