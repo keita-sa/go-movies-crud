@@ -70,11 +70,11 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
-	params := mux.Vars(r)
-	for index, item := range movies {
+	params := mux.Vars(r)                              // gorilla/muxの機能を使ってパスパラメータを取得
+	for index, item := range movies {                  // loop over the movies, range
 
-		if item.ID == params["id"] {
-			movies = append(movies[:index], movies[index+1:]...)
+		if item.ID == params["id"] { // itemのIDと、パラメータのidが同じ場合
+			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加
 			break
 		}
 	}
