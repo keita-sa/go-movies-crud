@@ -22,65 +22,54 @@ type Director struct {
 	Lastname  string `json:"lastname"`
 }
 
-var movies []Movie
+var movies []Movie // Movieのデータを保持するスライスの作成
 
 func getMovies(w http.ResponseWriter, r *http.Request) {
-	// レスポンスヘッダの設定
-	w.Header().Set("Content-Type", "application/json")
-	// Goのデータ型からJSONに変換
-	json.NewEncoder(w).Encode(movies)
+	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
+	json.NewEncoder(w).Encode(movies)                  // Goのデータ型からJSONに変換
 }
 
 func getMovie(w http.ResponseWriter, r *http.Request) {
-	// レスポンスヘッダの設定
-	w.Header().Set("Content-Type", "application/json")
-	// クエリパラメータの取得
-	params := mux.Vars(r)
-	for _, item := range movies {
-		if item.ID == params["id"] {
-			json.NewEncoder(w).Encode(item)
+	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
+	params := mux.Vars(r)                              // gorilla/muxの機能を使ってパスパラメータを取得
+	for _, item := range movies {                      // for _, v := range でループ。_,は回数が必要ない場合（通常はi）
+		if item.ID == params["id"] { // itemのIDと、パラメータのidが同じ場合
+			json.NewEncoder(w).Encode(item) // JSONデータを書き込む
 			return
 		}
 	}
 }
 
 func createMovie(w http.ResponseWriter, r *http.Request) {
-	// レスポンスヘッダの設定
-	w.Header().Set("Content-Type", "application/json")
-	// 変数宣言
-	var movie Movie
-	_ = json.NewDecoder(r.Body).Decode(&movie)
-	// strconv.Itoaで数値を文字列に変換
-	movie.ID = strconv.Itoa(rand.Intn(100))
-	movies = append(movies, movie)
-	json.NewEncoder(w).Encode(movie)
+	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
+	var movie Movie                                    // structで定義された新しい型(type)、Movie型の変数movie
+	_ = json.NewDecoder(r.Body).Decode(&movie)         // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレスに格納する
+	movie.ID = strconv.Itoa(rand.Intn(100))            // strconv.Itoaで数値を文字列に変換
+	movies = append(movies, movie)                     // moviesスライスの最後に要素を追加
+	json.NewEncoder(w).Encode(movie)                   // JSONデータを書き込む
 }
 
 func updateMovie(w http.ResponseWriter, r *http.Request) {
-	// レスポンスヘッダの設定
-	w.Header().Set("Content-Type", "application/json")
-	// クエリパラメータの取得
-	params := mux.Vars(r)
+	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
+	params := mux.Vars(r)                              // クエリパラメータの取得
 
-	// loop over the movies, range
-	// delete the movie with the i.d that you i've sent
+	// delete the movie with the i.d that you've sent
 	// add a new movie - the movie that we send in the body of postman
-	for index, item := range movies {
+	for index, item := range movies { // loop over the movies, range
 		if item.ID == params["id"] {
-			movies = append(movies[:index], movies[index+1:]...)
+			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加する（第二引数の後ろに...を加える）
 			var movie Movie
-			_ = json.NewDecoder(r.Body).Decode(&movie)
+			_ = json.NewDecoder(r.Body).Decode(&movie) // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレスに格納する
 			movie.ID = params["id"]
 			movies = append(movies, movie)
-			json.NewEncoder(w).Encode(movie)
+			json.NewEncoder(w).Encode(movie) // JSONデータを書き込む
 			return
 		}
 	}
 }
 
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
-	// レスポンスヘッダの設定
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
 	params := mux.Vars(r)
 	for index, item := range movies {
 
@@ -93,8 +82,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// NewRouter関数でマルチプレクサを生成
-	r := mux.NewRouter()
+	r := mux.NewRouter() // NewRouter関数でマルチプレクサを生成、ルーターのイニシャライズ
 
 	movies = append(movies, Movie{ID: "1", Isbn: "438277", Title: "Movie One", Director: &Director{Firstname: "John", Lastname: "Doe"}})
 	movies = append(movies, Movie{ID: "2", Isbn: "454369", Title: "Movie Two", Director: &Director{Firstname: "Steve", Lastname: "Smith"}})
