@@ -14,7 +14,7 @@ type Movie struct {
 	ID       string    `json:"id"`
 	Isbn     string    `json:"isbn"`
 	Title    string    `json:"title"`
-	Director *Director `json:"director"`
+	Director *Director `json:"director"` // 構造体のフィールドにポイント型で構造体を宣言
 }
 
 type Director struct {
@@ -82,7 +82,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	r := mux.NewRouter() // NewRouter関数でマルチプレクサを生成、ルーターのイニシャライズ
+	r := mux.NewRouter() // NewRouter関数でマルチプレクサを生成
 
 	movies = append(movies, Movie{ID: "1", Isbn: "438277", Title: "Movie One", Director: &Director{Firstname: "John", Lastname: "Doe"}})
 	movies = append(movies, Movie{ID: "2", Isbn: "454369", Title: "Movie Two", Director: &Director{Firstname: "Steve", Lastname: "Smith"}})
