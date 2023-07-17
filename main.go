@@ -82,7 +82,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	r := mux.NewRouter() // NewRouter関数でマルチプレクサを生成
+	r := mux.NewRouter() // NewRouter関数でマルチプレクサを生成、ルーターをイニシャライズ
 
 	movies = append(movies, Movie{ID: "1", Isbn: "438277", Title: "Movie One", Director: &Director{Firstname: "John", Lastname: "Doe"}})
 	movies = append(movies, Movie{ID: "2", Isbn: "454369", Title: "Movie Two", Director: &Director{Firstname: "Steve", Lastname: "Smith"}})
