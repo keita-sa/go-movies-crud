@@ -43,9 +43,9 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 func createMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
 	var movie Movie                                    // structで定義された新しい型(type)、Movie型の変数movie
-	_ = json.NewDecoder(r.Body).Decode(&movie)         // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレスに格納する
+	_ = json.NewDecoder(r.Body).Decode(&movie)         // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレス
 	movie.ID = strconv.Itoa(rand.Intn(100))            // strconv.Itoaで数値を文字列に変換
-	movies = append(movies, movie)                     // moviesスライスの最後に要素を追加
+	movies = append(movies, movie)                     // moviesスライスの最後の要素に追加
 	json.NewEncoder(w).Encode(movie)                   // JSONデータを書き込む
 }
 
@@ -57,12 +57,12 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 	// add a new movie - the movie that we send in the body of postman
 	for index, item := range movies { // loop over the movies, range
 		if item.ID == params["id"] {
-			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加する（第二引数の後ろに...を加える）
-			var movie Movie
-			_ = json.NewDecoder(r.Body).Decode(&movie) // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレスに格納する
+			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加（第二引数の後ろに...を加える）
+			var movie Movie                                      // structで定義された新しいtype, Movie型の変数movie
+			_ = json.NewDecoder(r.Body).Decode(&movie)           // JSONデータの読み込み、結果を構造体Movieのmovieアドレスに格納
 			movie.ID = params["id"]
 			movies = append(movies, movie)
-			json.NewEncoder(w).Encode(movie) // JSONデータを書き込む
+			json.NewEncoder(w).Encode(movie) // JSONデータの書き込み
 			return
 		}
 	}
@@ -70,10 +70,10 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
-	params := mux.Vars(r)                              // gorilla/muxの機能を使ってパスパラメータを取得
+	params := mux.Vars(r)                              // gorilla/mux機能を使ってパスパラメータを取得
 	for index, item := range movies {                  // loop over the movies, range
 
-		if item.ID == params["id"] { // itemのIDと、パラメータのidが同じ場合
+		if item.ID == params["id"] { // itemのIDとパラメータのidが同じ場合
 			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加
 			break
 		}
