@@ -43,7 +43,7 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 func createMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json") // レスポンスヘッダの設定
 	var movie Movie                                    // structで定義された新しい型(type)、Movie型の変数movie
-	_ = json.NewDecoder(r.Body).Decode(&movie)         // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレス
+	_ = json.NewDecoder(r.Body).Decode(&movie)         // JSONデータを読み込み、その結果を構造体Movieのmovieのアドレスに
 	movie.ID = strconv.Itoa(rand.Intn(100))            // strconv.Itoaで数値を文字列に変換
 	movies = append(movies, movie)                     // moviesスライスの最後の要素に追加
 	json.NewEncoder(w).Encode(movie)                   // JSONデータを書き込む
@@ -60,7 +60,7 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 			movies = append(movies[:index], movies[index+1:]...) // スライスをappendで追加（第二引数の後ろに...を加える）
 			var movie Movie                                      // structで定義された新しいtype, Movie型の変数movie
 			_ = json.NewDecoder(r.Body).Decode(&movie)           // JSONデータの読み込み、結果を構造体Movieのmovieアドレスに格納
-			movie.ID = params["id"]
+			movie.ID = params["ID"]
 			movies = append(movies, movie)
 			json.NewEncoder(w).Encode(movie) // JSONデータの書き込み
 			return
@@ -78,7 +78,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	json.NewEncoder(w).Encode(movies)
+	json.NewEncoder(w).Encode(movies) //JSONデータの書き込み
 }
 
 func main() {
