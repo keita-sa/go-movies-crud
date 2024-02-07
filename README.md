@@ -13,6 +13,7 @@ This code essentially sets up a basic server for managing a list of movies, allo
 ### Prerequisites
 
 - Go 1.20
+- gorilla/mux v1.8.X
 
 
 ### Setup
