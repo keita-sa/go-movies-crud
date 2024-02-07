@@ -5,7 +5,8 @@ This code essentially sets up a basic server for managing a list of movies, allo
 
 ## Features
 
-- Routing by a combination of paths and **HTTP methods**.
+- Route by a combination of paths and **HTTP methods** such as GET, POST, PUT and DELETE.
+- Test operations of web APIs with Postman. 
 
 ## Installation
 
