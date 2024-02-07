@@ -20,7 +20,7 @@ To set up the routes which mean endpoints, you need to install the `gorilla/mux`
 ```
 go get -u github.com/gorilla/mux
 ```
-
+## Usage
 
 
 
