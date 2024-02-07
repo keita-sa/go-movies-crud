@@ -36,6 +36,8 @@ Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} nu
 - `main.go`: The main file that contains the CRUD application's implementation.
 - `go.mod`: File contains all packages of a dependency which is required by the module.
 - `go.sum`: File contains cryptographic hashes of the module.
+- `Automatically generated JSON file
+
 
 
 ## References;
