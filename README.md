@@ -1,4 +1,4 @@
-# go movies crud
+# Build a CRUD API with Golang
 
 ## Overview
 This code essentially sets up a basic server for managing a list of movies, allowing clients to perform CRUD operations on the movie collection through HTTP requests.
