@@ -5,6 +5,8 @@ This code essentially sets up a basic server for managing a list of movies, allo
 
 ## Features
 
+- Routing by a combination of paths and HTTP methods.
+
 ## Installation
 
 ### Prerequisites
