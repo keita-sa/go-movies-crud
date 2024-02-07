@@ -11,7 +11,7 @@ This code essentially sets up a basic server for managing a list of movies, allo
 
 ### Setup
 ```
-sample
+go get -u github.com/gorilla/mux
 ```
 
 
