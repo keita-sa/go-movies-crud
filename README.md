@@ -22,6 +22,10 @@ go get -u github.com/gorilla/mux
 ```
 ## Usage
 
+Navigate to http://localhost:8000/ in your web browser. Enter a stock symbol and the application will display the historical and predicted stock prices.
+
+
+
 
 
 ### References;
