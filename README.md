@@ -32,7 +32,7 @@ go run main.go
 
 Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in dictionary format.
 
-## Application Structure
+## Application's Files
 - `main.go`: The main file that contains the CRUD application's implementation.
 - `go.mod`: File contains all packages of a dependency which is required by the module.
 - `go.sum`: File contains cryptographic hashes of the module.
