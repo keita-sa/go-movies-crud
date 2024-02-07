@@ -31,10 +31,10 @@ go run main.go
 
 Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in dictionary format.
 
+## Application Structure
 
 
 
-
-### References;
+## References;
 "2. Build A CRUD API With Golang, Building 11 Projects", Akhil Sharma (2021), YouTube\
  Also the code includes Automated API test monitors by Postman and Newman.
