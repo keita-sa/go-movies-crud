@@ -13,6 +13,8 @@ This code essentially sets up a basic server for managing a list of movies, allo
 
 
 ### Setup
+To set up the routes which mean endpoints, you need to install the `gorilla/mux`. You can do this by running:
+,
 ```
 go get -u github.com/gorilla/mux
 ```
