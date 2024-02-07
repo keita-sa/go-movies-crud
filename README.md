@@ -34,7 +34,7 @@ Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} nu
 ## Application Structure
 - `main.go`: The main file that contains Flask application and LSTM model implementation.
 - `go.mod/`: Directory containing HTML templates for the web interface.
-- `go.sum`: Directory for static files (if any).
+- `go.sum`: File contains cryptographic hashes of the module.
 
 
 ## References;
