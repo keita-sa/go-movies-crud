@@ -9,7 +9,7 @@ This code essentially sets up a basic server for managing a list of movies, allo
 
 ### Prerequisites
 
-- Go
+- Go 1.20
 
 
 ### Setup
