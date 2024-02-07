@@ -22,7 +22,7 @@ go get -u github.com/gorilla/mux
 ```
 ## Usage
 
-Navigate to `http://localhost:8000/movies` in your web browser. Enter a {id} number after `8000/movies/`, the application will display the movie's information; id, isbn, title and director in dictionary format.
+Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in dictionary format.
 
 
 
