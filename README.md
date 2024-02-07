@@ -32,7 +32,9 @@ go run main.go
 Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in dictionary format.
 
 ## Application Structure
-
+- `main.go`: The main file that contains Flask application and LSTM model implementation.
+- `go.mod/`: Directory containing HTML templates for the web interface.
+- `go.sum`: Directory for static files (if any).
 
 
 ## References;
