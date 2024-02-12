@@ -42,4 +42,4 @@ Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} nu
 
 ## References
 "2. Build A CRUD API With Golang, Building 11 Projects", Akhil Sharma (2021), YouTube\
- Also the code includes Automated API test monitors by Postman and Newman.
+ *Also the code includes Automated API test monitors by Postman.
