@@ -22,7 +22,7 @@ To set up the routes which mean endpoints, you need to install the `gorilla/mux`
 go get -u github.com/gorilla/mux
 ```
 ## Usage
-Click on the `<> Code` button and download the file by selecting `Download ZIP`. Once the download is complete, open the downloaded file in your IDE such as GoLand.
+Click on the `<> Code` button and download the file by selecting `Download ZIP`. Once the download is completed, open the downloaded file in your IDE such as GoLand.
 
 To start the application, run the following command in the terminal:
 
