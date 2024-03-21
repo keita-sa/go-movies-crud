@@ -30,7 +30,7 @@ To start the application, run the following command in the terminal:
 go run main.go
 ```
 
-Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in dictionary format.
+Navigate to `http://localhost:8000/movies` in your web browser. Enter an {id} number after `8000/movies/`, the application will display the movie's information including id, isbn, title and director in a dictionary format.
 
 ## Application's Files
 - `main.go`: The main file that contains the CRUD application's implementation.
